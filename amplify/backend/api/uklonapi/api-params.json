@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/uklon",
+      "lambdaFunction": "uklonapi",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/uklon"
+    }
+  ],
+  "resourceName": "uklonapi",
+  "apiName": "uklonapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "uklonapi"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-uklonapi-dev-123747-authRole",
+    "unAuthRoleName": "amplify-uklonapi-dev-123747-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "uklonapi",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

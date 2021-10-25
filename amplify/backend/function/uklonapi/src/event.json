@@ -1,0 +1,2 @@
+
+{ "path": "/uklon", "httpMethod": "POST", "queryStringParameters": "", "body": "{\"user_name\": \"Dotem\",\"car_model\": \"Audi\",\"car_number\": \"BC0923AA\",\"is_acive\": \"true\",\"last_order_complete\": \"August 2021 hz kolu\"}"}
