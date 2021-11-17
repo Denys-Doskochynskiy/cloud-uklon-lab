@@ -9,6 +9,9 @@ function SecretNew(params) {
     const [carNumber, setCarNumber] = useState("BCIOT3AA")
     const [lastOrderComplete, setLastOrderComplete] = useState("26.04.2021-Shafaryka6")
     const [isActive, setIsActive] = useState("false")
+    const [sensorType, setSensorType] = useState("false")
+    const [apiKey, setApiKey] = useState("false")
+
     return (<>
 
         <div style={{ margin: "0rem 2rem" }}>
@@ -47,9 +50,16 @@ function SecretNew(params) {
                 <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter status of actitvity</span>
                 <TextField onChange={(e) => setIsActive(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
 
+                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter type of order </span>
+                <TextField onChange={(e) => setSensorType(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
+
+                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter api key</span>
+                <TextField onChange={(e) => setApiKey(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
+                    
+
                 <Link
                     to="/"
-                    onClick={() => SaveUklon(username, carModel, carNumber,lastOrderComplete,isActive)}
+                    onClick={() => SaveUklon(username, carModel, carNumber,lastOrderComplete,isActive,sensorType,apiKey)}
                     class="link-protocol-secret create_template_button_t-secret btn-background-slide row "
                     style={{ width: '7%'}}
                 >
@@ -64,7 +74,7 @@ function SecretNew(params) {
 
     </>)
 }
-async function SaveUklon(username, carModel, carNumber,lastOrderComplete,isActive) {
+async function SaveUklon(username, carModel, carNumber,lastOrderComplete,isActive,sensorType,apiKey) {
 // if(isActive=="true"){
 //     isActive=true
 // }
@@ -73,11 +83,16 @@ async function SaveUklon(username, carModel, carNumber,lastOrderComplete,isActiv
 // }
 const data = await API.post('uklonapi', '/uklon', { 
   body: { 
-    user_name: username, 
-    car_model: carModel, 
-    car_number: carNumber ,
-    last_order_complete:lastOrderComplete,
-    is_active:isActive
+
+
+    timestamp:  lastOrderComplete, 
+    sensor_id: carNumber ,
+    sensor_type: sensorType,
+    smoke_sensor:isActive,
+    sensor_model: carModel,
+    responsible_person:username,
+    API_KEY: apiKey
+   
   } 
 })
 
