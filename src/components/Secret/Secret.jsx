@@ -22,7 +22,7 @@ function Secret() {
   useEffect(() => {
     fetchData();
   }, [
-    //   textObj
+      textObj
     ]);
   
     // let textObj = [{ 'Secret': "dslkkdslkd" }, { 'Secret': "dslkkdwefafslkd" }, { 'Secret': "dslkkdslkd" }, { 'Secret': "dslkkdwefafslkd" }, { 'Secret': "dslkkdslkd" }, { 'Secret': "dslkkdwefafslkd" }, { 'Secret': "dslkr3qrqfkdslkd" }, { 'Secret': "1234dslkkdslkd" }, { 'Secret': "dslkkdslkddvsvdd" }]
@@ -48,24 +48,27 @@ function Secret() {
                         
                         <div className="element-secret" style={{ display: "flex", margin: "0.5rem", padding: "0.5rem" }}>
                             <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                                <div style={{ height: "300px", display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
+                                <div style={{ height: "370px", display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
                                     <span style={{}}>
-                                        Водій: {obj.user_name.S}
+                                        Водій: {obj.responsible_person.S}
                                     </span>
                                     <span style={{}}>
 
-                                        Марка автомобіля: {obj.car_model.S}
+                                        Марка автомобіля: {obj.sensor_model.S}
                                     </span>
                                     <span style={{}}>
-                                        Номер машини: {obj.car_number.S}
+                                        Номер машини: {obj.sensor_id.S}
                                     </span>
                                     <span style={{}}>
-                                        Останнє замовлення: {obj.last_order_complete.S}
+                                        Останнє замовлення: {obj.timestamp.S}
                                     </span>
                                     <span style={{}}>
-                                        Зараз виконує замовлення: {obj.is_active.S}
+                                        Зараз виконує замовлення: {obj.smoke_sensor.S}
                                     </span>
-                                 
+                                    <span style={{}}>
+                                    Тип замовлення: {obj.sensor_type.S}
+                                    </span>
+
                                  <div style={{display:"flex",flexDirection:"row"}}>
                                     <Link
                                  onClick={()=>localStorage.setItem("selectedItem",obj.id.S)}
