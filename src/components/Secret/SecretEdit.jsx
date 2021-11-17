@@ -9,6 +9,8 @@ function SecretEdit(params) {
     const [carNumber, setCarNumber] = useState("BCIOT3AA")
     const [lastOrderComplete, setLastOrderComplete] = useState("26.04.2021-Shafaryka6")
     const [isActive, setIsActive] = useState("false")
+    const [sensorType, setSensorType] = useState("false")
+    const [apiKey, setApiKey] = useState("false")
     return (<>
 
         <div style={{ margin: "0rem 2rem" }}>
@@ -26,15 +28,15 @@ function SecretEdit(params) {
 
 
             <div className="main-section-secret-second" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              
+
 
 
                 <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
-                    Enter user name 
+                    Enter user name
                 </span>
                 <TextField onChange={(e) => setUsername(e.target.value)} style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
-                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> 
-                Enter car model
+                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
+                    Enter car model
                 </span>
                 <TextField onChange={(e) => setCarModel(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
 
@@ -47,13 +49,19 @@ function SecretEdit(params) {
                 <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter status of actitvity</span>
                 <TextField onChange={(e) => setIsActive(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
 
+                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter type of order </span>
+                <TextField onChange={(e) => setSensorType(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
+
+                <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}> Enter api key</span>
+                <TextField onChange={(e) => setApiKey(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem", width: "20%" }} type="text" />
+                    
                 <Link
                     to="/"
-                    onClick={() => EditUklon(username, carModel, carNumber,lastOrderComplete,isActive)}
+                    onClick={() => EditUklon(username, carModel, carNumber, lastOrderComplete, isActive, sensorType, apiKey)}
                     class="link-protocol-secret create_template_button_t-secret btn-background-slide row "
-                    style={{ width: '7%'}}
+                    style={{ width: '7%' }}
                 >
-                    <span  className="text_decoration" style={{ display:"flex"}}>Save story</span>
+                    <span className="text_decoration" style={{ display: "flex" }}>Save story</span>
                 </Link>
             </div>
 
@@ -64,20 +72,23 @@ function SecretEdit(params) {
 
     </>)
 }
-async function EditUklon(username, carModel, carNumber,lastOrderComplete,isActive) {
+async function EditUklon(username, carModel, carNumber, lastOrderComplete, isActive, sensorType, apiKey) {
 
-const data = await API.put('uklonapi', `/uklon/${localStorage.getItem("selectedItem")}`, {
+    const data = await API.put('uklonapi', `/uklon/${localStorage.getItem("selectedItem")}`, {
 
-        body: { 
-          user_name: username, 
-          car_model: carModel, 
-          car_number: carNumber ,
-          last_order_complete:lastOrderComplete,
-          is_active:isActive
-        } 
-      
-})
-console.log(data)
+        body: {
+
+            timestamp: lastOrderComplete,
+            sensor_id: carNumber,
+            sensor_type: sensorType,
+            smoke_sensor: isActive,
+            sensor_model: carModel,
+            responsible_person: username,
+            API_KEY: apiKey
+        }
+
+    })
+    console.log(data)
 }
 
 
