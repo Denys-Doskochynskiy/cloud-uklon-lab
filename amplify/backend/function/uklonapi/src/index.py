@@ -17,14 +17,18 @@ BASE_ROUTE = "/uklon"
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_uklon():
     request_json = request.get_json()
-    print(request.get_json().get("user_name"))
+    #print(request.get_json().get("user_name"))
+    if request_json.get("API_KEY") != "keyhere":
+        return jsonify(message="Wrong API key")
     client.put_item(TableName=TABLE, Item={
         'id': {'S': str(uuid4())},
-        'user_name': {'S': request_json.get("user_name")},
-        'car_model': {'S': request_json.get("car_model")},
-        'car_number': {'S': request_json.get("car_number")},
-        'is_active': {'S': request_json.get("is_active")},
-        'last_order_complete': {'S': request_json.get("last_order_complete")},
+        'timestamp': {'S': request_json.get("timestamp")},
+        'sensor_id': {'S': request_json.get("sensor_id")},
+        'sensor_type': {'S': request_json.get("sensor_type")},
+        'smoke_sensor': {'S': request_json.get("smoke_sensor")},
+        'sensor_model': {'S': request_json.get("sensor_model")},
+        'responsible_person': {'S': request_json.get("responsible_person")},
+        'API_KEY': {'S': request_json.get("API_KEY")},
     })
     return jsonify(message="item created")
 
@@ -42,20 +46,24 @@ def update_uklon(uklon_id):
     client.update_item(
         TableName=TABLE,
         Key={'id': {'S': uklon_id}},
-        UpdateExpression='SET #user_name = :user_name, #car_model = :car_model, #car_number = :car_number, #is_active = :is_active, #last_order_complete = :last_order_complete',
+        UpdateExpression='SET #timestamp = :timestamp, #sensor_id = :sensor_id, #sensor_type = :sensor_type, #smoke_sensor = :smoke_sensor, #sensor_model = :sensor_model, #responsible_person = :responsible_person, #API_KEY = :API_KEY',
         ExpressionAttributeNames={
-            '#user_name': 'user_name',
-            '#car_model': 'car_model',
-            '#car_number': 'car_number',
-            '#is_active': 'is_active',
-            '#last_order_complete': 'last_order_complete'
+            '#timestamp': 'timestamp',
+            '#sensor_id': 'sensor_id',
+            '#sensor_type': 'sensor_type',
+            '#smoke_sensor': 'smoke_sensor',
+            '#sensor_model': 'sensor_model',
+            '#responsible_person': 'responsible_person',
+            '#API_KEY': 'API_KEY'
         },
         ExpressionAttributeValues={
-            ':user_name': {'S': request.json['user_name']},
-            ':car_model': {'S': request.json['car_model']},
-            ':car_number': {'S': request.json['car_number']},
-            ':is_active': {'S': request.json['is_active']},
-            ':last_order_complete': {'S': request.json['last_order_complete']}
+            ':timestamp': {'S': request.json['timestamp']},
+            ':sensor_id': {'S': request.json['sensor_id']},#
+            ':sensor_type': {'S': request.json['sensor_type']},#
+            ':smoke_sensor': {'S': request.json['smoke_sensor']},#
+            ':sensor_model': {'S': request.json['sensor_model']},#
+            ':responsible_person': {'S': request.json['responsible_person']},#
+            ':API_KEY': {'S': request.json['API_KEY']}#
         }
     )
     return jsonify(message="...............item updated?")

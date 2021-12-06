@@ -1,0 +1,5 @@
+{
+    "tableName": "ukloniot",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

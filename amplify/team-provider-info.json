@@ -15,6 +15,27 @@
       "function": {
         "uklonapi": {
           "deploymentBucketName": "amplify-uklonapi-dev-123747-deployment",
+          "s3Key": "amplify-builds/uklonapi-306d644b496d37414362-build.zip"
+        }
+      }
+    }
+  },
+  "enviot": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-uklonapi-enviot-203405-authRole",
+      "UnauthRoleArn": "arn:aws:iam::793171686183:role/amplify-uklonapi-enviot-203405-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::793171686183:role/amplify-uklonapi-enviot-203405-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-uklonapi-enviot-203405-deployment",
+      "UnauthRoleName": "amplify-uklonapi-enviot-203405-unauthRole",
+      "StackName": "amplify-uklonapi-enviot-203405",
+      "StackId": "arn:aws:cloudformation:us-east-2:793171686183:stack/amplify-uklonapi-enviot-203405/c8b76fc0-470b-11ec-8288-0aec67c173cc",
+      "AmplifyAppId": "d2w0soxmdma5ct"
+    },
+    "categories": {
+      "function": {
+        "uklonapi": {
+          "deploymentBucketName": "amplify-uklonapi-enviot-203405-deployment",
           "s3Key": "amplify-builds/uklonapi-2b64703941663971377a-build.zip"
         }
       }

@@ -3,6 +3,10 @@
     "uklondb": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "ukloniot": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
