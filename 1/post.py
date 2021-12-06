@@ -4,7 +4,7 @@ import time
 from random import randint
 
 
-url = 'http://www.dotem.xyz/api/'
+url = 'http://www.dotemus.xyz/api/'
 
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
