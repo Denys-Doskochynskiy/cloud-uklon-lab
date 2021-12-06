@@ -87,7 +87,7 @@ const body = {
     responsible_person:username,
     API_KEY: apiKey
 };
-axios.post(`http://dotemus.xyz:80/uklon/`, {body})
+axios.post(`http://dotemus.xyz:80/api/`, {body})
 
 
 
