@@ -1,0 +1,17 @@
+version: '3'
+services:
+  publish1:
+    hostname: publish1
+    image: dotem/publish
+    build:
+      dockerfile: ./Dockerfile
+  publish2:
+    hostname: publish2
+    image: dotem/publish
+    build:
+      dockerfile: ./Dockerfile
+  publish3:
+    hostname: publish3
+    image: dotem/publish
+    build:
+      dockerfile: ./Dockerfile
