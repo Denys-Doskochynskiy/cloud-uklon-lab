@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
-import { API } from 'aws-amplify'
+// import { API } from 'aws-amplify'
 
 function SecretEdit(params) {
     const [username, setUsername] = useState("Vlad Usyk edit")
@@ -74,21 +74,21 @@ function SecretEdit(params) {
 }
 async function EditUklon(username, carModel, carNumber, lastOrderComplete, isActive, sensorType, apiKey) {
 
-    const data = await API.put('uklonapi', `/uklon/${localStorage.getItem("selectedItem")}`, {
+    // const data = await API.put('uklonapi', `/uklon/${localStorage.getItem("selectedItem")}`, {
 
-        body: {
+    //     body: {
 
-            timestamp: lastOrderComplete,
-            sensor_id: carNumber,
-            sensor_type: sensorType,
-            smoke_sensor: isActive,
-            sensor_model: carModel,
-            responsible_person: username,
-            API_KEY: apiKey
-        }
+    //         timestamp: lastOrderComplete,
+    //         sensor_id: carNumber,
+    //         sensor_type: sensorType,
+    //         smoke_sensor: isActive,
+    //         sensor_model: carModel,
+    //         responsible_person: username,
+    //         API_KEY: apiKey
+    //     }
 
-    })
-    console.log(data)
+    // })
+    // console.log(data)
 }
 
 

@@ -6,11 +6,13 @@ import ast
 from flask_cors import CORS
 from flask import Flask, jsonify, request
 from uuid import uuid4
-os.environ['AWS_DEFAULT_REGION'] = 'us-east-2'
-client = boto3.client("dynamodb")
+# os.environ['AWS_DEFAULT_REGION'] = 'us-east-2'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+client = boto3.client("dynamodb", region_name='us-east-2', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 TABLE = os.environ.get("STORAGE_UKLONDB_NAME")
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*", "allow_headers": "*", "expose_headers": "*"}})
 BASE_ROUTE = "/uklon"
 
 
@@ -77,3 +79,5 @@ def delete_uklon(uklon_id):
 
 def handler(event, context):
     return awsgi.response(app, event, context)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')

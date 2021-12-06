@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import { API } from 'aws-amplify'
+import axios from "axios";
 
 function SecretNew(params) {
     const [username, setUsername] = useState("Vlad Usyk")
@@ -75,12 +76,21 @@ function SecretNew(params) {
     </>)
 }
 async function SaveUklon(username, carModel, carNumber,lastOrderComplete,isActive,sensorType,apiKey) {
-// if(isActive=="true"){
-//     isActive=true
-// }
-// else{
-//     isActive=false
-// }
+
+
+// const body = {
+  
+//     timestamp:  lastOrderComplete, 
+//     sensor_id: carNumber ,
+//     sensor_type: sensorType,
+//     smoke_sensor:isActive,
+//     sensor_model: carModel,
+//     responsible_person:username,
+//     API_KEY: apiKey
+// };
+// axios.post(`http://dotem.xyz:80/uklon/`, {body})
+
+
 const data = await API.post('uklonapi', '/uklon', { 
   body: { 
 
