@@ -4,7 +4,7 @@ import time
 from random import randint
 
 
-url = 'https://ppyff76r68.execute-api.us-east-2.amazonaws.com/dev/uklon'
+url = 'http://www.dotem.xyz/api/'
 
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 

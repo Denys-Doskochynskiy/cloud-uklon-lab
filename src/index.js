@@ -4,10 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { Amplify } from 'aws-amplify'
-import config from './aws-exports'
-import { API } from 'aws-amplify'
-Amplify.configure(config)
+
+
 // const data =  API.post('uklonapi', '/uklon', { 
 //   body: { 
 //     user_name: 'Denys aboba', 

@@ -2,16 +2,20 @@ version: '3'
 services:
   publish1:
     hostname: publish1
-    image: dotem/publish
+    image: dotemus/publish
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: "Dockerfile"
   publish2:
     hostname: publish2
-    image: dotem/publish
+    image: dotemus/publish
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: "Dockerfile"
   publish3:
     hostname: publish3
-    image: dotem/publish
+    image: dotemus/publish
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: "Dockerfile"
+

@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Secret from './components/Secret/Secret';
 import SecretNew from './components/Secret/SecretNew';
 import { useEffect } from 'react';
-import { Amplify } from 'aws-amplify'
-import config from './aws-exports'
-import { API } from 'aws-amplify'
 import SecretEdit from './components/Secret/SecretEdit';
 
 // const updateAPIData = () => {

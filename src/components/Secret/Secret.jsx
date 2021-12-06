@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { API } from 'aws-amplify'
 import axios from "axios";
 import "./Secret.css"
 
@@ -14,13 +13,13 @@ function Secret() {
       try {
 
 
-        // axios.get('http://dotem.xyz:80/uklon/').then(res => {
-        //         const data = res.data;
-        //         setTextObj(data);
-        //     })
-        const data = await API.get('uklonapi', '/uklon');
-        console.log(data)
-        setTextObj(data);
+        axios.get('http://dotem.xyz:80/uklon/').then(res => {
+                const data = res.data;
+                setTextObj(data);
+            })
+        // const data = await API.get('uklonapi', '/uklon');
+        // console.log(data)
+        // setTextObj(data);
       } catch (error) {
         console.log(error);
       }
@@ -98,9 +97,9 @@ function Secret() {
 
 async function  deleteObj (id){
 
-    // axios.delete(`http://dotem.xyz:80/uklon/${id}`)
-    const del=await API.del('uklonapi', `/uklon/${id}`)
-    console.log(del);
+axios.delete(`http://dotem.xyz:80/uklon/${id}`)
+    // const del=await API.del('uklonapi', `/uklon/${id}`)
+    // console.log(del);
 }
 function SaveSecret(Secret, SecretOne, SecretTwo) {
     localStorage.setItem("Secret", Secret)
