@@ -13,7 +13,7 @@ function Secret() {
       try {
 
 
-        axios.get('http://dotemus.xyz:5000/uklon').then(res => {
+        axios.get('http://www.dotemus.xyz:5000/uklon').then(res => {
                 const data = res.data;
                 setTextObj(data);
             })
@@ -97,7 +97,7 @@ function Secret() {
 
 async function  deleteObj (id){
 
-axios.delete(`http://dotemus.xyz:5000/uklon/${id}`)
+axios.delete(`http://www.dotemus.xyz:5000/uklon/${id}`)
     // const del=await API.del('uklonapi', `/uklon/${id}`)
     // console.log(del);
 }
