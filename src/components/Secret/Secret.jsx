@@ -97,7 +97,7 @@ function Secret() {
 
 async function  deleteObj (id){
 
-axios.delete(`http://dotemus.xyz:80/api/${id}`)
+axios.delete(`http://dotemus.xyz:5000/uklon/${id}`)
     // const del=await API.del('uklonapi', `/uklon/${id}`)
     // console.log(del);
 }
