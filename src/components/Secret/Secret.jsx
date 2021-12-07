@@ -13,7 +13,7 @@ function Secret() {
       try {
 
 
-        axios.get('http://dotemus.xyz:80/api/').then(res => {
+        axios.get('http://dotemus.xyz:5000/uklon').then(res => {
                 const data = res.data;
                 setTextObj(data);
             })
